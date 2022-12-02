@@ -1,0 +1,23 @@
+<div class="container">
+  <header>
+    <div class="logo"></div>
+    <nav>
+      <ul>
+        <li><a href="#">Products</a></li>
+        <li><a href="#">Cart</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main>
+    <h2>Products</h2>
+    <div class="wrap-for-cards">
+      <div *ngFor="let val of generatedData" class="card">
+         <span class="title">{{val.title}}</span>
+        <span class="price">{{val.price}} $</span>
+        <button class="">Add to cart</button>
+      </div>
+    </div>
+    <button>Load more</button>
+    <a class="admin-link" href="#">Admin -></a>
+  </main>
+</div>
