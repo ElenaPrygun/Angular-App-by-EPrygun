@@ -1,5 +1,5 @@
 <div *ngFor="let val of generatedData" class="card">
-    <span class="title">{{ val.title }}</span>
-    <span class="price">{{ val.price }} $</span>
-    <button class="">Add to cart</button>
-  </div>
+  <span class="title">{{ val.title }}</span>
+  <span class="price" appSelectColor [price]=val.price>{{ val.price | currencyUAH }} </span>
+  <button class="">Add to cart</button>
+</div>

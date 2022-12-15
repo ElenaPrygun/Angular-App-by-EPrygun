@@ -5,6 +5,8 @@ import { HeaderComponent } from './header/header.component';
 import { ProductsListComponent } from './products-list/products-list.component';
 import { CardComponent } from './card/card.component';
 import { BottomNavComponent } from './bottom-nav/bottom-nav.component';
+import { CurrencyPipe } from './shared/currency.pipe';
+import { SelectColorDirective } from './shared/select-color.directive';
 
 @NgModule({
   declarations: [
@@ -13,6 +15,8 @@ import { BottomNavComponent } from './bottom-nav/bottom-nav.component';
     ProductsListComponent,
     CardComponent,
     BottomNavComponent,
+    CurrencyPipe,
+    SelectColorDirective,
   ],
   imports: [CommonModule],
   exports: [ProductsComponent],
