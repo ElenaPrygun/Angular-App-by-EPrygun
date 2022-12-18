@@ -13,10 +13,10 @@ export class SelectColorDirective implements OnInit {
   }
 
   selectColor(price: number) {
-    if (price > 300) {
-      this.el.nativeElement.style.color = 'green';
+    if (price > 500) {
+      this.el.nativeElement.style.color = 'yellow';
     }
-    if (price > 600) {
+    if (price > 1000) {
       this.el.nativeElement.style.color = 'red';
     }
   }

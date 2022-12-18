@@ -1,15 +1,4 @@
-$flex: flex;
-$row: row;
-$main-bg: #f5f5f5;
-$dark-bg: #b3b3b3;
-$btn-bg: #8b8b8b;
-
-@mixin flex-row($flex: flex, $row: row, $juststart: flex-start) {
-  display: $flex;
-  flex-direction: $row;
-  justify-content: $juststart;
-}
-
+@import "/src/assets/style/variables.scss";
 
 .card {
     @include flex-row(flex, column, center);
@@ -21,8 +10,13 @@ $btn-bg: #8b8b8b;
     gap: 30px;
   }
 
+  .title a{
+    text-decoration: none;
+    color: black;
+  }
 
-button {
+
+  .add-btn {
   width: 238px;
   height: 60px;
   background-color: $btn-bg;

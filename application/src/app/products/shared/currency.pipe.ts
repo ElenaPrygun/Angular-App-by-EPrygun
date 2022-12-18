@@ -9,7 +9,3 @@ export class CurrencyPipe implements PipeTransform {
   }
 }
 
-// new Intl.NumberFormat('en-IN', {
-//   style: 'currencyUAH',
-//   currency: 'UAH',
-// }).format(Number(value));

@@ -1,0 +1,17 @@
+<app-header></app-header>
+
+<div class="description">
+  <h3>Product -> {{ product?.title }}</h3>
+  <h3>{{ product?.title }}</h3>
+  <p>
+    Description: Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+    Molestias perspiciatis fugit magnam fugiat! Corporis voluptatum eum
+    doloribus consequuntur veritatis reiciendis rem ipsam fugiat, aperiam veniam
+    consectetur numquam delectus sed praesentium!
+  </p>
+  <span>Price: {{ product?.price | currency : "₴" }}</span>
+  <br />
+  <button class="add-btn">Add to cart</button>
+</div>
+
+<app-bottom-nav></app-bottom-nav>

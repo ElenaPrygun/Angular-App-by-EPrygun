@@ -11,7 +11,7 @@ const routes: Routes = [
     path: 'products',
     loadChildren: () =>
       import('./products/products-routing.model').then(
-        (m) => m.ProductsRoutingModule
+        (mod) => mod.ProductsRoutingModule
       ),
   },
 ];

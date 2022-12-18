@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ProductsService } from './shared/products.service';
-import { ProductData } from './shared/productData.interface';
+import { ProductsService } from '../shared/products.service';
+import { ProductData } from '../shared/productData.interface';
 
 @Component({
   selector: 'app-products',
@@ -8,7 +8,6 @@ import { ProductData } from './shared/productData.interface';
   styleUrls: ['./products.component.scss'],
 })
 export class ProductsComponent implements OnInit {
-  
   public generatedData: ProductData[] = [];
 
   constructor(private productsService: ProductsService) {}
