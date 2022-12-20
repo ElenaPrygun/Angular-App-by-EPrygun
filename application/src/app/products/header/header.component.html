@@ -3,7 +3,7 @@
   <nav>
     <ul>
       <li><a routerLink="/products">Products</a></li>
-      <li (mouseenter)="showTooltip()" (mouseleave)="hideTooltip()" >
+      <li (mouseenter)="showTooltip()">
         <a routerLink="/cart">Cart</a>
       </li>
     </ul>
@@ -11,6 +11,7 @@
 </header>
 <div *ngIf="!isAvaliable" class="tooltip">
   <div class="products">
+    <button (click)="hideTooltip()" class="close-btn"></button>
     <div *ngFor="let item of items" class="products-item">
       <div class="wrap-for-title">
         <span>{{ item.title }}</span>

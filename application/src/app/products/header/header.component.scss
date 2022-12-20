@@ -44,6 +44,19 @@ header {
     @include flex-row(flex, column, flex-start);
   }
 
+  .close-btn{
+    width: 30px;
+    height: 30px;
+    align-self: flex-end;
+    border-radius: 22px;
+    border: none;
+    cursor: pointer;
+    background-image: url("/assets/images/close.png");
+    background-position: center center;
+    background-repeat: no-repeat;    
+   
+  }
+
   .products-item {
     @include flex-row(flex, row, space-around);    
     padding: 30px;
