@@ -6,6 +6,7 @@ header {
   height: 101px;
   background-color: $dark-bg;
   padding-left: 97px;
+  position:relative;
 
   .logo {
     width: 50px;
@@ -28,4 +29,43 @@ header {
       }
     }
   }
+}
+.tooltip{
+  width: 535px;
+  height: auto;
+  background-color: $btn-bg;
+  position:absolute;
+  top:135px;
+  left:364px;
+  padding:40px;
+  border-radius: 22px;
+
+  .products{
+    @include flex-row(flex, column, flex-start);
+  }
+
+  .products-item {
+    @include flex-row(flex, row, space-around);    
+    padding: 30px;
+    font-size: 24px;
+    .wrap-for-title{
+      @include flex-row(flex, column, flex-start);
+    }
+  }
+
+  
+  .add-btn {
+    width: 177px;
+    height: 50px;
+    background-color: $dark-bg;
+    border-radius: 22px;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+  }
+
+  .cart-price{
+    align-self: flex-end;
+  }
+  
 }

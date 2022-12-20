@@ -1,0 +1,45 @@
+@import "/src/assets/style/variables.scss";
+
+.container{
+    padding-left: 98px;
+    padding-right: 98px;
+    padding-top: 30px;
+    @include flex-row(flex, column);      
+}
+
+.cart-header{
+    @include flex-row;
+    gap:65px;
+    padding-bottom:30px;
+}
+
+.cart-price{
+    font-size: 48px;
+    padding-bottom:30px
+}
+.products {
+  @include flex-row(flex, row, flex-start);
+  gap: 30px;
+  flex-wrap: wrap;
+  margin-bottom: 48px;
+}
+
+.products-item {
+  @include flex-row(flex, column, space-evenly);
+  width: 342px;
+  height: 271px;
+  background-color: $dark-bg;
+  border-radius: 5%;
+  padding: 30px;
+  font-size: 36px;
+}
+
+.add-btn {
+  width: 238px;
+  height: 60px;
+  background-color: $btn-bg;
+  border-radius: 22px;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+}

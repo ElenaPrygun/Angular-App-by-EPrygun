@@ -11,11 +11,6 @@ import { ProductData } from '../shared/productData.interface';
 })
 export class ProdDescriptionComponent implements OnInit {
   product: ProductData | undefined;
-  // product:ProductData={
-  //   id: 0,
-  //   title: "",
-  //   price:0,
-  // };
 
   productId: number = 0;
   generatedData: ProductData[] = [];
