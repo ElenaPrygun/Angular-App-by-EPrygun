@@ -13,6 +13,7 @@ export class CardComponent implements OnInit {
     id: 0,
     title: '',
     price: 0,
+    amount: 0
   };
   buttonText:string ="";
 

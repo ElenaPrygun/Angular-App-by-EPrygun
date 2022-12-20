@@ -6,7 +6,7 @@ header {
   height: 101px;
   background-color: $dark-bg;
   padding-left: 97px;
-  position:relative;
+  position: relative;
 
   .logo {
     width: 50px;
@@ -30,21 +30,21 @@ header {
     }
   }
 }
-.tooltip{
+.tooltip {
   width: 535px;
   height: auto;
   background-color: $btn-bg;
-  position:absolute;
-  top:135px;
-  left:364px;
-  padding:40px;
+  position: absolute;
+  top: 135px;
+  left: 364px;
+  padding: 40px;
   border-radius: 22px;
 
-  .products{
+  .products {
     @include flex-row(flex, column, flex-start);
   }
 
-  .close-btn{
+  .close-btn {
     width: 30px;
     height: 30px;
     align-self: flex-end;
@@ -53,20 +53,27 @@ header {
     cursor: pointer;
     background-image: url("/assets/images/close.png");
     background-position: center center;
-    background-repeat: no-repeat;    
-   
+    background-repeat: no-repeat;
   }
 
   .products-item {
-    @include flex-row(flex, row, space-around);    
-    padding: 30px;
+    @include flex-row(flex, row, space-around);
+    padding-bottom: 30px;
     font-size: 24px;
-    .wrap-for-title{
+    .wrap-for-title {
       @include flex-row(flex, column, flex-start);
+    }
+    .amount {
+      button {
+        width: 40px;
+        height: 40px;
+        border-radius: 22px;
+        border: none;
+        margin: 0 20px;
+      }
     }
   }
 
-  
   .add-btn {
     width: 177px;
     height: 50px;
@@ -77,8 +84,7 @@ header {
     cursor: pointer;
   }
 
-  .cart-price{
+  .cart-price {
     align-self: flex-end;
   }
-  
 }

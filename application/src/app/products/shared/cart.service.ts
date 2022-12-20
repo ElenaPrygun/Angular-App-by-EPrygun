@@ -2,26 +2,25 @@ import { Injectable } from '@angular/core';
 import { ProductData } from './productData.interface';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class CartService {
+  prodItems: ProductData[] = [];  
 
-  prodItems: ProductData[] = [];
+  constructor() {}
 
-  constructor() { }
-
-  getProdItems(){
+  getProdItems() {
     return this.prodItems;
   }
 
-  addToCart(item:ProductData){
+  addToCart(item: ProductData) {
     this.prodItems.push(item);
   }
 
-  getTotalPrice(){
-    let totalPrice=0;
-    for (let item of this.prodItems){
-      totalPrice +=item.price;
+  getTotalPrice() {
+    let totalPrice = 0;
+    for (let item of this.prodItems) {
+      totalPrice += item.price * item.amount;
     }
     return totalPrice;
   }
@@ -31,5 +30,5 @@ export class CartService {
     if (index !== -1) {
       this.prodItems.splice(index, 1);
     }
-  }
+  } 
 }

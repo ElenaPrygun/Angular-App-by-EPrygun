@@ -15,7 +15,12 @@
     <div *ngFor="let item of items" class="products-item">
       <div class="wrap-for-title">
         <span>{{ item.title }}</span>
-        <span>{{ item.price | currencyUAH }}</span>
+        <span>{{ item.price*item.amount | currencyUAH }}</span>
+      </div>
+      <div class="amount">
+        <button (click)="minus(item?.id)">-</button>
+        <span>{{ item.amount }}</span>
+        <button (click)="plus(item?.id)">+</button>
       </div>
       <button (click)="removeItem(item.id)" class="add-btn">Delete</button>
     </div>

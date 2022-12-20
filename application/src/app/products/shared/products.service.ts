@@ -19,6 +19,7 @@ export class ProductsService {
         id: i,
         title: `Product # ${i}`,
         price: Math.floor(Math.random() * 1000 + 300),
+        amount: 1,
       });
     }
     return newArr;

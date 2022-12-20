@@ -9,7 +9,12 @@
   <div class="products">
     <div *ngFor="let item of items" class="products-item">
       <span>{{ item.title }}</span>
-      <span>{{ item.price | currencyUAH }}</span>
+      <span>{{ item.price * item.amount | currencyUAH }}</span>
+      <div class="amount">
+        <button (click)="minus(item?.id)">-</button>
+        <span>{{ item.amount }}</span>
+        <button (click)="plus(item?.id)">+</button>
+      </div>
       <button (click)="removeItem(item.id)" class="add-btn">
         Remove from cart
       </button>
