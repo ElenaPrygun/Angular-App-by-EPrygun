@@ -12,7 +12,8 @@ main {
     align-self: flex-start;
   }
 
-  app-card {
+
+  .wrap-for-cards {
     @include flex-row(flex, row, center);
     gap: 30px;
     flex-wrap: wrap;

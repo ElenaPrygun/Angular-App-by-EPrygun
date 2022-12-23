@@ -10,6 +10,10 @@ import { SelectColorDirective } from './shared/select-color.directive';
 import { ProdDescriptionComponent } from './prod-description/prod-description.component';
 import { RouterModule } from '@angular/router';
 
+import { CartComponent } from './cart/cart.component';
+import {ProductsRoutingModule} from './products-routing.model';
+
+
 @NgModule({
   declarations: [
     ProductsComponent,
@@ -20,8 +24,10 @@ import { RouterModule } from '@angular/router';
     CurrencyPipe,
     SelectColorDirective,
     ProdDescriptionComponent,
+    CartComponent,
   ],
-  imports: [CommonModule, RouterModule],
+  imports: [CommonModule, RouterModule, ProductsRoutingModule ],
+
   // exports: [ProductsComponent],
 })
 export class ProductsModule {}

@@ -1,7 +1,9 @@
 <main>
   <h2>Products</h2>
   <div class="wrap-for-cards">
-    <app-card></app-card>
+
+    <app-card *ngFor="let val of generatedData" [product]="val"></app-card>
+
   </div>
   <button>Load more</button>
 </main>

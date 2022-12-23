@@ -1,18 +1,26 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
+
+import { CartComponent } from './products/cart/cart.component';
+import {NotFoundComponent} from './shared/not-found/not-found.component';
+
 const routes: Routes = [
   {
     path: '',
-    pathMatch: 'full',
-    redirectTo: 'products',
+    loadChildren: () =>
+      import('./products/products.module').then(
+        (mod) => mod.ProductsModule
+      ),
   },
   {
-    path: 'products',
-    loadChildren: () =>
-      import('./products/products-routing.model').then(
-        (mod) => mod.ProductsRoutingModule
-      ),
+    path: 'cart',
+    pathMatch: 'full',
+    component: CartComponent,
+  },
+  {
+    path: '**',
+    component: NotFoundComponent,
   },
 ];
 
