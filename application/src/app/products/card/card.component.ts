@@ -1,12 +1,15 @@
+
 import { Component, Input, OnInit } from '@angular/core';
 import { CartService } from '../shared/cart.service';
 import { ProductData } from '../shared/productData.interface';
+
 
 @Component({
   selector: 'app-card',
   templateUrl: './card.component.html',
   styleUrls: ['./card.component.scss'],
 })
+
 export class CardComponent implements OnInit {
   @Input()
   product: ProductData = {
@@ -28,3 +31,4 @@ export class CardComponent implements OnInit {
     this.buttonText="In cart"
   }
 }
+

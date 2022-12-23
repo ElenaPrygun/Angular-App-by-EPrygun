@@ -1,3 +1,4 @@
+
 import { Component, OnInit } from '@angular/core';
 import { ProductsService } from '../shared/products.service';
 import { ProductData } from '../shared/productData.interface';
@@ -7,6 +8,7 @@ import { ProductData } from '../shared/productData.interface';
   templateUrl: './products-list.component.html',
   styleUrls: ['./products-list.component.scss']
 })
+
 export class ProductsListComponent implements OnInit {
   public generatedData: ProductData[]=[];
 
@@ -15,4 +17,6 @@ export class ProductsListComponent implements OnInit {
   ngOnInit(): void {
     this.generatedData = this.productsService.generatedData;
   }
+
+
 }
