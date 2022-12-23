@@ -1,1 +1,26 @@
-<p>table works!</p>
+<div class="table">
+  <div>
+    <div *ngFor="let title of titles" class="table-title">
+      <div>{{ title.id }}</div>
+      <div>{{ title.name }}</div>
+      <div>{{ title.changeProperty }}</div>
+      <button class="circle-btn add"></button>
+    </div>
+  </div>
+  <div class="table-body">
+    <div *ngFor="let item of items" class="table-item">
+      <div>{{ item.id }}</div>
+      <div>{{ item.title }}</div>
+      <div>{{ item.price | currency : "₴" }}</div>
+      <div>
+        <button class="circle-btn"></button>
+        <button class="circle-btn"></button>
+      </div>      
+    </div>
+    <div class="table-bottom">
+        <span>5/10</span>
+        <button class="circle-btn add"></button>
+        <button class="circle-btn add"></button>
+      </div>
+  </div>
+</div>

@@ -2,9 +2,10 @@
 
 :host {
   @include flex-row;
+  width: 100ww;
   background-color: $light-grey;
 }
 
 router-outlet{
-    padding: 52px;
+    padding: 45px;
 }
