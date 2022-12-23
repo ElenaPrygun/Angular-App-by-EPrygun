@@ -1,0 +1,24 @@
+@import "/src/assets/style/variables.scss";
+
+.description {
+  padding-left: 93px;
+  font-size: 18px;
+
+span{
+    font-size: 24px;
+}
+p{
+  width: 780px;
+}
+
+  .add-btn {
+    margin-top: 36px;
+    width: 238px;
+    height: 60px;
+    background-color: $btn-bg;
+    border-radius: 22px;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+  }
+}

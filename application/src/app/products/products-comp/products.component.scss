@@ -1,0 +1,10 @@
+@import "/src/assets/style/variables.scss";
+
+.container {
+  background-color: $main-bg;
+  width: 1920px;
+  margin: 0 auto;
+  overflow-y: auto;
+  font-size: 36px;
+  box-sizing: border-box;
+}

@@ -1,0 +1,30 @@
+@import "/src/assets/style/variables.scss";
+
+main {
+  padding-left: 98px;
+  padding-right: 98px;
+  @include flex-row(flex, column);
+  align-items: center;
+
+  h2 {
+    font-size: 48px;
+    font-weight: 400;
+    align-self: flex-start;
+  }
+
+  app-card {
+    @include flex-row(flex, row, center);
+    gap: 30px;
+    flex-wrap: wrap;
+    margin-bottom: 48px;
+  }
+  button {
+    width: 238px;
+    height: 60px;
+    background-color: $btn-bg;
+    border-radius: 22px;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+  }
+}

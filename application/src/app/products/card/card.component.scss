@@ -1,0 +1,27 @@
+@import "/src/assets/style/variables.scss";
+
+.card {
+    @include flex-row(flex, column, center);
+    width: 342px;
+    height: 271px;
+    background-color: $dark-bg;
+    border-radius: 5%;
+    padding: 30px;
+    gap: 30px;
+  }
+
+  .title a{
+    text-decoration: none;
+    color: black;
+  }
+
+
+  .add-btn {
+  width: 238px;
+  height: 60px;
+  background-color: $btn-bg;
+  border-radius: 22px;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+}
