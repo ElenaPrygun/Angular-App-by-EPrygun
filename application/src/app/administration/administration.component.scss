@@ -1,0 +1,10 @@
+@import "/src/assets/style/variables.scss";
+
+:host {
+  @include flex-row;
+  background-color: $light-grey;
+}
+
+router-outlet{
+    padding: 52px;
+}
