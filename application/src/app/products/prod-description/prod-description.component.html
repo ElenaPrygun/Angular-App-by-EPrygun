@@ -9,7 +9,7 @@
   </p>
   <span>Price: {{ product?.price | currency : "₴" }}</span>
   <br />
-  <button class="add-btn">Add to cart</button>
+  <button (click)="addToCart()" class="add-btn">{{ buttonText }}</button>
 </div>
 
 

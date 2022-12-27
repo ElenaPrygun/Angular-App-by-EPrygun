@@ -9,7 +9,7 @@
   <div class="products">
     <div *ngFor="let item of items" class="products-item">
       <span>{{ item.title }}</span>
-      <span>{{ item.price * item.amount | currencyUAH }}</span>
+      <span>{{item.price}} / {{ item.price * item.amount | currencyUAH }}</span>
       <div class="amount">
         <button (click)="minus(item?.id)">-</button>
         <span>{{ item.amount }}</span>
