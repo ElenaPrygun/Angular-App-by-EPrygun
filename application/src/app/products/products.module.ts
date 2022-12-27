@@ -11,7 +11,7 @@ import { ProdDescriptionComponent } from './prod-description/prod-description.co
 import { RouterModule } from '@angular/router';
 
 import { CartComponent } from './cart/cart.component';
-import {ProductsRoutingModule} from './products-routing.model';
+import { ProductsRoutingModule } from './products-routing.model';
 
 
 @NgModule({
