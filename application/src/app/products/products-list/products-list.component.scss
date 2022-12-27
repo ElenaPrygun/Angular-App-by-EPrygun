@@ -12,6 +12,7 @@ main {
     align-self: flex-start;
   }
 
+
   .wrap-for-cards {
     @include flex-row(flex, row, center);
     gap: 30px;
