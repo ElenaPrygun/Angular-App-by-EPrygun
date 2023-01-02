@@ -13,7 +13,6 @@ import { RouterModule } from '@angular/router';
 import { CartComponent } from './cart/cart.component';
 import { ProductsRoutingModule } from './products-routing.model';
 
-
 @NgModule({
   declarations: [
     ProductsComponent,
@@ -26,7 +25,7 @@ import { ProductsRoutingModule } from './products-routing.model';
     ProdDescriptionComponent,
     CartComponent,
   ],
-  imports: [CommonModule, RouterModule, ProductsRoutingModule ],
+  imports: [CommonModule, RouterModule, ProductsRoutingModule],
 
   // exports: [ProductsComponent],
 })
