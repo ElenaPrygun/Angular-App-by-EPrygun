@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { CartService } from '../shared/cart.service';
 import { ProductData } from '../shared/productData.interface';
 
+
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.component.html',

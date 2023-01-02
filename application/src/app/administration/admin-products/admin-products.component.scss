@@ -1,0 +1,50 @@
+@import "/src/assets/style/variables.scss";
+
+.products-header{
+    height: 200px;
+    width: 1300px;    
+    
+
+
+
+    h2{
+        font-size: 48px;
+    }
+
+    .products-inputs{
+        @include flex-row(flex, row, space-between);
+        align-items: flex-start;
+        height: 200px;
+        width: 100%;
+        background-color:$dark-bg;
+        padding: 30px;
+        
+
+    }
+   
+
+    .search{
+        width: 480px;
+        height: 69px;
+        font-size: 32px;
+        
+    }
+    select{
+        width: 380px;
+        height: 69px;
+        font-size: 32px;
+    }
+
+    .amount{
+        width: 109px;
+        height: 69px;
+        font-size: 32px;
+    }
+    .apply{
+        width: 155px;
+        height: 69px;
+        font-size: 32px;
+    }
+}
+
+

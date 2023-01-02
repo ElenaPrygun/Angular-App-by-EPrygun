@@ -7,9 +7,7 @@ import { ProductsComponent } from './products-comp/products.component';
 import { ProductsListComponent } from './products-list/products-list.component';
 import { ProdDescriptionComponent } from './prod-description/prod-description.component';
 import { CartComponent } from './cart/cart.component';
-import {NotFoundComponent} from '../shared/not-found/not-found.component';
-=======
-
+import { NotFoundComponent } from '../shared/not-found/not-found.component';
 
 const routes: Routes = [
   {

@@ -6,7 +6,7 @@ import { ProductData } from './productData.interface';
   providedIn: 'root',
 })
 export class CartService {
-  prodItems: ProductData[] = [];  
+  prodItems: ProductData[] = [];
 
   constructor() {}
 
@@ -31,5 +31,5 @@ export class CartService {
     if (index !== -1) {
       this.prodItems.splice(index, 1);
     }
-  } 
+  }
 }

@@ -1,0 +1,13 @@
+<div class="products-header">
+    <h2>Products</h2>
+    <div class="products-inputs">
+        <input type="search" placeholder="Search..." class="search"/>
+        <select>
+            <option>Price more than:</option>
+        </select>
+        <input type="number" class="amount"/>
+        <button class="apply">Apply</button>
+    </div>
+</div>
+
+<app-table [items]="generatedData" [titles]="productTitles"></app-table>

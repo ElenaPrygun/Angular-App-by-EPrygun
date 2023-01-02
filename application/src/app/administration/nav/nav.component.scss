@@ -1,0 +1,52 @@
+@import "/src/assets/style/variables.scss";
+
+.aside {
+  width: 306px;
+  height: 1080px;
+  background-color: $dark-bg;
+  padding-left: 58px;
+  padding-top: 28px;
+  padding-bottom: 54px;
+  font-size: 36px;
+  position: relative;
+
+
+  .logo {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #d9d9d9;
+    cursor: pointer;
+    margin-bottom: 28px;
+  }
+
+  ul {      
+    margin: 0;
+    padding: 0;    
+
+    li {
+      list-style-type: none;
+      height: 67px;
+      width: 100%;
+
+      a {
+        color: #000;
+        text-decoration: none;
+      }
+      
+    }
+  }
+
+  .footer-nav{   
+    position: absolute; 
+    bottom: 30px;
+    a {
+        color: #000;
+        text-decoration: none;
+      }
+  }
+  .active{
+    background-color: $light-grey;
+    padding-left: 0;    
+  }
+}
