@@ -5,10 +5,9 @@ import { AdministrationComponent } from './administration.component';
 import { AdministrationRoutingModule } from './administration-routing.model';
 import { NavComponent } from './nav/nav.component';
 import { TableComponent } from './table/table.component';
-import {AdminProductsComponent} from './admin-products/admin-products.component';
+import { AdminProductsComponent } from './admin-products/admin-products.component';
 import { UsersComponent } from './users/users.component';
-
-
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 @NgModule({
   declarations: [
@@ -16,8 +15,8 @@ import { UsersComponent } from './users/users.component';
     NavComponent,
     TableComponent,
     AdminProductsComponent,
-    UsersComponent
+    UsersComponent,
   ],
-  imports: [CommonModule, AdministrationRoutingModule],
+  imports: [CommonModule, AdministrationRoutingModule, NgxSpinnerModule],
 })
 export class AdministrationModule {}

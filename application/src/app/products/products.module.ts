@@ -12,6 +12,8 @@ import { RouterModule } from '@angular/router';
 
 import { CartComponent } from './cart/cart.component';
 import { ProductsRoutingModule } from './products-routing.model';
+import { NgxSpinnerModule } from 'ngx-spinner';
+
 
 @NgModule({
   declarations: [
@@ -25,7 +27,12 @@ import { ProductsRoutingModule } from './products-routing.model';
     ProdDescriptionComponent,
     CartComponent,
   ],
-  imports: [CommonModule, RouterModule, ProductsRoutingModule],
+  imports: [
+    CommonModule,
+    RouterModule,
+    ProductsRoutingModule,
+    NgxSpinnerModule,    
+  ],
 
   // exports: [ProductsComponent],
 })

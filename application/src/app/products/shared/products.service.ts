@@ -1,15 +1,22 @@
 import { Injectable } from '@angular/core';
 import { ProductData } from './productData.interface';
+import { Observable, of, delay, Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ProductsService {
-  generatedData: ProductData[] = [];
+  public generatedData$: Observable<ProductData[]> = new Subject<
+    ProductData[]
+  >();
   private cardsToShow: number = 8;
 
   constructor() {
-    this.generatedData = this.generateData(this.cardsToShow);
+    this.generatedData$ = this.generateDataAsync();
+  }
+
+  generateDataAsync(): Observable<ProductData[]> {
+    return of(this.generateData(this.cardsToShow)).pipe(delay(1000));
   }
 
   generateData(n: number): ProductData[] {
