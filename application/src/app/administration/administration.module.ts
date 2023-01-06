@@ -8,6 +8,7 @@ import { TableComponent } from './table/table.component';
 import { AdminProductsComponent } from './admin-products/admin-products.component';
 import { UsersComponent } from './users/users.component';
 import { NgxSpinnerModule } from 'ngx-spinner';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,11 @@ import { NgxSpinnerModule } from 'ngx-spinner';
     AdminProductsComponent,
     UsersComponent,
   ],
-  imports: [CommonModule, AdministrationRoutingModule, NgxSpinnerModule],
+  imports: [
+    CommonModule,
+    AdministrationRoutingModule,
+    NgxSpinnerModule,
+    NgxPaginationModule,
+  ],
 })
 export class AdministrationModule {}
