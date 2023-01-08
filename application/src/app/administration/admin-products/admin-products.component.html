@@ -2,13 +2,29 @@
   <ngx-spinner type="ball-scale-multiple"></ngx-spinner>
   <h2>Products</h2>
   <div class="products-inputs">
-    <input type="search" placeholder="Search..." class="search" />
-    <select>
-      <option>Price more than:</option>
+    <input
+      type="search"
+      placeholder="Search..."
+      class="search"
+      [(ngModel)]="searchValue"
+      (ngModelChange)="searchSubject$.next(searchValue)"
+    />
+    <select [(ngModel)]="selectedOption">
+      <option value="less">Price less than:</option>
+      <option value="more">Price more than:</option>
     </select>
-    <input type="number" class="amount" />
-    <button class="apply">Apply</button>
+    <input
+      type="number"
+      class="amount"
+      placeholder="0"
+      [(ngModel)]="inputValue"      
+    />
+    <button class="apply" (click)="filterPrice()">Apply</button>
   </div>
 </div>
 
-<app-table [items]="generatedData" [titles]="productTitles"></app-table>
+<app-table
+  [items]="filteredProducts"
+  [titles]="productTitles"
+  (onSort)="sortData($event, items)"
+></app-table>

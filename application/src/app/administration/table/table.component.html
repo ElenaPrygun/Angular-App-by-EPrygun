@@ -1,9 +1,35 @@
 <div class="table">
   <div>
     <div *ngFor="let title of titles" class="table-title">
-      <div>{{ title.id }}</div>
-      <div>{{ title.name }}</div>
-      <div>{{ title.changeProperty }}</div>
+      <div
+        (click)="sortData(title.id)"
+        [ngClass]="{
+          'sort-asc': sortProperty === title.id && sortDirection === 'asc',
+          'sort-desc': sortProperty === title.id && sortDirection === 'desc'
+        }"
+      >
+        {{ title.id }}
+      </div>
+      <div
+        (click)="sortData(title.name)"
+        [ngClass]="{
+          'sort-asc': sortProperty === title.name && sortDirection === 'asc',
+          'sort-desc': sortProperty === title.name && sortDirection === 'desc'
+        }"
+      >
+        {{ title.name }}
+      </div>
+      <div
+        (click)="sortData(title.changeProperty)"
+        [ngClass]="{
+          'sort-asc':
+            sortProperty === title.changeProperty && sortDirection === 'asc',
+          'sort-desc':
+            sortProperty === title.changeProperty && sortDirection === 'desc'
+        }"
+      >
+        {{ title.changeProperty }}
+      </div>
       <button class="circle-btn add"></button>
     </div>
   </div>
@@ -22,7 +48,9 @@
         <button class="circle-btn"></button>
       </div>
     </div>
-    <pagination-controls 
-      (pageChange)="p = $event" class="table-bottom"></pagination-controls>    
+    <pagination-controls
+      (pageChange)="p = $event"
+      class="table-bottom"
+    ></pagination-controls>
   </div>
 </div>

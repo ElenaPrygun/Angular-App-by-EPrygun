@@ -1,51 +1,57 @@
 @import "/src/assets/style/variables.scss";
 
-.table{
-    width: 1300px;
-    height: auto;
-    font-size: 32px;
-    background-color: $dark-bg;   
-    padding: 30px;       
+.table {
+  width: 1300px;
+  height: auto;
+  font-size: 32px;
+  background-color: $dark-bg;
+  padding: 30px;
 
+  .table-title {
+    @include flex-row(flex, row, space-between);
+  }
 
-    .table-title{
-        @include flex-row(flex, row, space-between);
+  .table-item {
+    height: 87px;
+    background-color: $light-grey;
+    @include flex-row(flex, row, space-between);
+    align-items: center;
+    margin-top: 32px;
+    border-radius: 10px;
+    padding: 0px 10px;
+  }
+
+  .circle-btn {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: none;
+    background-color: $dark-bg;
+    margin-right: 16px;
+  }
+
+  .add {
+    background-color: $light-grey;
+  }
+
+  .table-bottom {
+    @include flex-row(flex, row, flex-end);
+    right: 20px;    
+
+    span {
+      margin-right: 26px;
     }
+  }
 
+  .sort-asc::after {
+    content: " ▲";
+    color: grey;
+  }
 
-    .table-item{
-        height: 87px;
-        background-color: $light-grey;
-        @include flex-row(flex, row, space-between);
-        align-items: center;
-        margin-top: 32px;
-        border-radius: 10px; 
-        padding: 0px 10px; 
+  .sort-desc::after {
+    content: " ▼";
+    color: grey;
+  }
 
-       
-    }
-
-    .circle-btn{
-        width: 50px;
-        height: 50px;
-        border-radius: 50%;
-        border: none;
-        background-color: $dark-bg;
-        margin-right: 16px;
-    }
-
-    .add{
-        background-color: $light-grey;
-    }
-
-    .table-bottom{
-        @include flex-row(flex, row, flex-end);
-        right: 20px;
-        padding: 32px;
-
-        span{
-            margin-right: 26px;
-        }
-    }
-
+  
 }

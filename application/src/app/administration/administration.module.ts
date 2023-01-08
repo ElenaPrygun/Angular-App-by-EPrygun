@@ -9,6 +9,7 @@ import { AdminProductsComponent } from './admin-products/admin-products.componen
 import { UsersComponent } from './users/users.component';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -16,13 +17,14 @@ import { NgxPaginationModule } from 'ngx-pagination';
     NavComponent,
     TableComponent,
     AdminProductsComponent,
-    UsersComponent,
+    UsersComponent,    
   ],
   imports: [
     CommonModule,
     AdministrationRoutingModule,
     NgxSpinnerModule,
     NgxPaginationModule,
+    FormsModule
   ],
 })
 export class AdministrationModule {}
