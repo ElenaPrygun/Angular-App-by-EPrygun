@@ -17,7 +17,7 @@
       type="number"
       class="amount"
       placeholder="0"
-      [(ngModel)]="inputValue"      
+      [(ngModel)]="inputValue"
     />
     <button class="apply" (click)="filterPrice()">Apply</button>
   </div>
@@ -27,4 +27,9 @@
   [items]="filteredProducts"
   [titles]="productTitles"
   (onSort)="sortData($event, items)"
+  (edit)="openEditDialog($event)"
+  (add)="openAddDialog()"
+  (delete)="openDeleteDialog($event)" 
 ></app-table>
+
+

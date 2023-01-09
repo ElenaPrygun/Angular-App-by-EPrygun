@@ -10,12 +10,14 @@ export class TableComponent implements OnInit {
   public items: any;
   @Input()
   public titles: any;
-  @Input()
-  title: any;
 
   @Output()
   public onSort: EventEmitter<string> = new EventEmitter<string>();
 
+  @Output() add = new EventEmitter();
+  @Output() edit = new EventEmitter();
+  @Output() delete = new EventEmitter();
+  
   public p: number = 1;
   public sortProperty!: string;
   public sortDirection: 'asc' | 'desc' = 'asc';

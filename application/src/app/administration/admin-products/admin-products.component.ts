@@ -1,9 +1,12 @@
 import { Component } from '@angular/core';
-import { ProductData } from 'src/app/products/shared/productData.interface';
-import { ProductsService } from 'src/app/products/shared/products.service';
-import { Subscription, Subject } from 'rxjs';
+import { ProductData } from 'src/app/shop/shared/productData.interface';
+import { ProductsService } from 'src/app/shop/shared/products.service';
+import { Subscription, Subject, take } from 'rxjs';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
+import { MatDialog } from '@angular/material/dialog';
+import { ProductModalComponent } from '../shared/product-modal/product-modal.component';
+import { WarningModalComponent } from '../shared/warning-modal/warning-modal.component';
 
 @Component({
   selector: 'app-admin-products',
@@ -32,7 +35,8 @@ export class AdminProductsComponent {
 
   constructor(
     public productsService: ProductsService,
-    private SpinnerService: NgxSpinnerService
+    private SpinnerService: NgxSpinnerService,
+    private dialog: MatDialog
   ) {}
 
   ngOnInit(): void {
@@ -45,7 +49,7 @@ export class AdminProductsComponent {
       }
     );
     this.searchSubject$
-      .pipe(debounceTime(2000), distinctUntilChanged())
+      .pipe(debounceTime(1000), distinctUntilChanged())
       .subscribe((value) => {
         this.searchValue = value;
         this.searchData();
@@ -81,7 +85,7 @@ export class AdminProductsComponent {
   filterPrice() {
     this.filteredProducts = this.generatedData;
     const price = parseInt(this.inputValue, 10);
-    if (isNaN(price)) {      
+    if (isNaN(price)) {
     } else {
       if (this.selectedOption === 'less') {
         this.filteredProducts = this.generatedData.filter(
@@ -93,5 +97,66 @@ export class AdminProductsComponent {
         );
       }
     }
+  }
+
+  public openEditDialog(item: ProductData): void {
+    const dialogRef = this.dialog.open(ProductModalComponent, {
+      data: { isEdit: true, item },
+    });
+
+    dialogRef.afterClosed().subscribe((result: ProductData) => {
+      if (result) {
+        this.productsService.editProduct(result);
+        this.productsService.generatedData$
+          .pipe(take(1))
+          .subscribe((products) => {
+            this.generatedData = products;
+            this.filteredProducts = [...products];
+          });
+      }
+    });
+  }
+
+  public openAddDialog(): void {
+    const dialogRef = this.dialog.open(ProductModalComponent, {
+      data: { isEdit: false },
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result) {
+        let newProduct: ProductData = {
+          id: this.generatedData.length + 1,
+          title: result.title,
+          price: result.price,
+          amount: result.amount,
+        };
+
+        this.productsService.addProduct(newProduct);
+        this.productsService.generatedData$
+          .pipe(take(1))
+          .subscribe((products) => {
+            this.generatedData = products;
+            this.filteredProducts = [...products];
+          });
+      }
+    });
+  }
+
+  public openDeleteDialog(item: ProductData): void {
+    const dialogRef = this.dialog.open(WarningModalComponent, {
+      data: { item },
+    });
+
+    dialogRef.afterClosed().subscribe((result: string) => {
+      if (result === 'ok') {
+        this.productsService.deleteProduct(item);
+        this.productsService.generatedData$
+          .pipe(take(1))
+          .subscribe((products) => {
+            this.generatedData = products;
+            this.filteredProducts = [...products];
+          });
+      }
+    });
   }
 }

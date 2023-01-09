@@ -5,7 +5,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
-import { NotFoundComponent } from './shared/not-found/not-found.component';
+import { NotFoundComponent } from './errors/not-found/not-found.component';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { FormsModule } from '@angular/forms';
