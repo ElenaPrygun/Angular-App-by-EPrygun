@@ -2,14 +2,13 @@
 
 .aside {
   width: 306px;
-  height: 1080px;
+  height: 957px;
   background-color: $dark-bg;
   padding-left: 58px;
   padding-top: 28px;
   padding-bottom: 54px;
   font-size: 36px;
   position: relative;
-
 
   .logo {
     width: 50px;
@@ -20,9 +19,9 @@
     margin-bottom: 28px;
   }
 
-  ul {      
+  ul {
     margin: 0;
-    padding: 0;    
+    padding: 0;
 
     li {
       list-style-type: none;
@@ -33,20 +32,19 @@
         color: #000;
         text-decoration: none;
       }
-      
     }
   }
 
-  .footer-nav{   
-    position: absolute; 
+  .footer-nav {
+    position: absolute;
     bottom: 30px;
     a {
-        color: #000;
-        text-decoration: none;
-      }
+      color: #000;
+      text-decoration: none;
+    }
   }
-  .active{
+  .active {
     background-color: $light-grey;
-    padding-left: 0;    
+    padding-left: 0;
   }
 }
