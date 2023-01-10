@@ -21,18 +21,21 @@ export class TableComponent implements OnInit {
   public p: number = 1;
   public sortProperty!: string;
   public sortDirection: 'asc' | 'desc' = 'asc';
+  
 
   constructor() {
     this.sortProperty = '';
     this.sortDirection = 'asc';
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    
+  }
 
   sortData(property: string) {
     this.sortProperty = property;
     this.sortDirection = this.sortDirection === 'asc' ? 'desc' : 'asc';
-    this.items = this.items.sort((a: any, b: any) => {
+    this.items = [...this.items].sort((a: any, b: any) => {
       const propA = Reflect.get(a, property);
       const propB = Reflect.get(b, property);
       if (this.sortDirection === 'asc') {

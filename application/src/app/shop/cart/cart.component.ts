@@ -2,7 +2,6 @@ import { Component, Input, OnInit } from '@angular/core';
 import { CartService } from '../shared/cart.service';
 import { ProductData } from '../shared/productData.interface';
 
-
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.component.html',
@@ -10,7 +9,7 @@ import { ProductData } from '../shared/productData.interface';
 })
 export class CartComponent implements OnInit {
   items: ProductData[] = this.cartService.getProdItems();
-  totalPrice: number = 0;  
+  totalPrice: number = 0;
 
   constructor(private cartService: CartService) {}
 
@@ -18,22 +17,30 @@ export class CartComponent implements OnInit {
     this.totalPrice = this.cartService.getTotalPrice();
   }
 
-  removeItem(id: number | undefined) {
-    this.cartService.removeItem(id);
-    this.totalPrice = this.cartService.getTotalPrice();
+  removeItem(id: string| undefined) {
+    if(id) {
+      this.cartService.removeItem(id);
+      this.totalPrice = this.cartService.getTotalPrice();
   }
-  plus(id?: number) {
-    let item = this.items.find(x => x.id === id);
-    if(item?.amount || item?.amount === 0){
-      item.amount++;
+  }
+
+  minus(item: ProductData) {
+    if(item && item.amount) {
+      item.amount -= 1;
+      if(item.amount <= 0) {
+        this.removeItem(item.id);
+      }
     }
     this.totalPrice = this.cartService.getTotalPrice();
   }
-  minus(id?: number) {
-    let item = this.items.find(x => x.id === id);
-    if(item?.amount){
-      item.amount--;
+  
+  plus(item: ProductData) {
+    if(item && item.amount) {
+      item.amount += 1;
     }
     this.totalPrice = this.cartService.getTotalPrice();
-  } 
+  }
+
 }
+
+

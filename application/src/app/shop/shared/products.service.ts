@@ -21,14 +21,14 @@ export class ProductsService {
 
   generateData(n: number): ProductData[] {
     let newArr: ProductData[] = [];
-    for (let i = 1; i <= n; i++) {
-      newArr.push({
-        id: i,
-        title: `Product # ${i}`,
-        price: Math.floor(Math.random() * 1000 + 300),
-        amount: 1,
-      });
-    }
+    // for (let i = 1; i <= n; i++) {
+    //   newArr.push({
+    //     id: i,
+    //     title: `Product # ${i}`,
+    //     price: Math.floor(Math.random() * 1000 + 300),
+    //     amount: 1,
+    //   });
+    // }
     return newArr;
   }
 
@@ -57,7 +57,7 @@ export class ProductsService {
           (elementOfProducts: ProductData) =>
             !(
               elementOfProducts.id === product.id &&
-              elementOfProducts.title === product.title
+              elementOfProducts.name === product.name
             )
         );
       })

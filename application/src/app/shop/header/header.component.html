@@ -3,7 +3,7 @@
   <nav>
     <ul>
       <li><a routerLink="/products">Products</a></li>
-      <li (mouseenter)="showTooltip()">
+      <li (mouseenter)="showTooltip()" >
         <a routerLink="/cart">Cart</a>
       </li>
     </ul>
@@ -14,15 +14,15 @@
     <button (click)="hideTooltip()" class="close-btn"></button>
     <div *ngFor="let item of items" class="products-item">
       <div class="wrap-for-title">
-        <span>{{ item.title }}</span>
-        <span>{{ item.price*item.amount | currencyUAH }}</span>
+        <span>{{ item.name }}</span>
+        <span>{{ item.price | currencyUAH }}</span>
       </div>
       <div class="amount">
-        <button (click)="minus(item?.id)">-</button>
+        <button (click)="minus(item)">-</button>
         <span>{{ item.amount }}</span>
-        <button (click)="plus(item?.id)">+</button>
-      </div>
-      <button (click)="removeItem(item.id)" class="add-btn">Delete</button>
+        <button (click)="plus(item)">+</button>
+      </div> 
+      <button (click)="removeItem(item.id)" class="add-btn">Delete</button> 
     </div>
     <div class="cart-price">Total: {{ totalPrice }} UAH</div>
   </div>

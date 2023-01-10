@@ -15,18 +15,26 @@ export class CartService {
   }
 
   addToCart(item: ProductData) {
-    this.prodItems.push(item);
+    let exists = this.prodItems.find(x => x.id === item.id);
+    if(exists && exists.amount) {
+        exists.amount +=1;
+    } else {
+        item.amount = 1;
+        this.prodItems.push(item);
+    }
   }
 
   getTotalPrice() {
     let totalPrice = 0;
     for (let item of this.prodItems) {
-      totalPrice += item.price * item.amount;
+      if(item && item.amount) {
+        totalPrice += item.price * item.amount; 
+      }
     }
     return totalPrice;
   }
 
-  removeItem(id: number | undefined) {
+  removeItem(id: string) {
     let index = this.prodItems.findIndex((el) => el.id === id);
     if (index !== -1) {
       this.prodItems.splice(index, 1);

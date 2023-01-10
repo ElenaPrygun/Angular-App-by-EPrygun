@@ -2,8 +2,8 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { AdministrationComponent } from './administration.component';
-import {UsersComponent} from './users/users.component';
-import {AdminProductsComponent} from './admin-products/admin-products.component';
+import { UsersComponent } from './users/users.component';
+import { AdminProductsComponent } from './admin-products/admin-products.component';
 
 const routes: Routes = [
   {
@@ -12,7 +12,7 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        redirectTo: '/administration/users',
+        redirectTo: '/administration/products',
         pathMatch: 'full',
       },
       {
@@ -28,7 +28,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [CommonModule,RouterModule.forChild(routes)],
+  imports: [CommonModule, RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
 export class AdministrationRoutingModule {}

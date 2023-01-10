@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ProductData } from 'src/app/shop/shared/productData.interface';
+import { HttpProduct } from '../../shared/interfaces/httpProduct.interface';
 import { ProductsService } from 'src/app/shop/shared/products.service';
 import { Subscription, Subject, take } from 'rxjs';
 import { NgxSpinnerService } from 'ngx-spinner';
@@ -7,6 +8,7 @@ import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 import { MatDialog } from '@angular/material/dialog';
 import { ProductModalComponent } from '../shared/product-modal/product-modal.component';
 import { WarningModalComponent } from '../shared/warning-modal/warning-modal.component';
+import { ProductHTTPService } from 'src/app/shared/services/product-http.service';
 
 @Component({
   selector: 'app-admin-products',
@@ -34,20 +36,18 @@ export class AdminProductsComponent {
   inputValue = '';
 
   constructor(
-    public productsService: ProductsService,
+    public productsService: ProductHTTPService,
     private SpinnerService: NgxSpinnerService,
     private dialog: MatDialog
   ) {}
 
   ngOnInit(): void {
     this.SpinnerService.show();
-    this.dataSubscription = this.productsService.generatedData$.subscribe(
-      (d) => {
-        this.generatedData = d;
-        this.filteredProducts = d;
-        this.SpinnerService.hide();
-      }
-    );
+    this.dataSubscription = this.productsService.getAll().subscribe((d) => {
+      this.generatedData = d;
+      this.filteredProducts = d;
+      this.SpinnerService.hide();
+    });
     this.searchSubject$
       .pipe(debounceTime(1000), distinctUntilChanged())
       .subscribe((value) => {
@@ -63,9 +63,9 @@ export class AdminProductsComponent {
   searchData() {
     this.filteredProducts = this.generatedData.filter((product) => {
       return (
-        product.title.toLowerCase().includes(this.searchValue.toLowerCase()) ||
+        product.name.toLowerCase().includes(this.searchValue.toLowerCase()) ||
         product.price.toString().includes(this.searchValue) ||
-        product.title.toLowerCase().includes(this.searchValue.toLowerCase())
+        product.name.toLowerCase().includes(this.searchValue.toLowerCase())
       );
     });
   }
@@ -106,8 +106,9 @@ export class AdminProductsComponent {
 
     dialogRef.afterClosed().subscribe((result: ProductData) => {
       if (result) {
-        this.productsService.editProduct(result);
-        this.productsService.generatedData$
+        this.productsService.update(result);
+        this.productsService
+          .getAll()
           .pipe(take(1))
           .subscribe((products) => {
             this.generatedData = products;
@@ -122,40 +123,54 @@ export class AdminProductsComponent {
       data: { isEdit: false },
     });
 
-    dialogRef.afterClosed().subscribe((result) => {
+    dialogRef.afterClosed().subscribe((result: ProductData) => {
       if (result) {
         let newProduct: ProductData = {
-          id: this.generatedData.length + 1,
-          title: result.title,
+          name: result.name,
           price: result.price,
-          amount: result.amount,
         };
 
-        this.productsService.addProduct(newProduct);
-        this.productsService.generatedData$
-          .pipe(take(1))
-          .subscribe((products) => {
-            this.generatedData = products;
-            this.filteredProducts = [...products];
-          });
+        this.productsService.create(newProduct).subscribe(() => {
+          this.productsService
+            .getAll()
+            .pipe(take(1))
+            .subscribe((data: HttpProduct[]) => {
+              this.generatedData = data.map((item: HttpProduct) =>
+                this.toProduct(item)
+              );
+              this.filteredProducts = [...this.generatedData];
+            });
+        });
       }
     });
   }
 
+  private toProduct(data: HttpProduct): ProductData {
+    return {
+      id: data.id,
+      name: data.name,
+      price: data.price,
+    };
+  }
+
   public openDeleteDialog(item: ProductData): void {
     const dialogRef = this.dialog.open(WarningModalComponent, {
-      data: { item },
+      data: item,
     });
 
     dialogRef.afterClosed().subscribe((result: string) => {
       if (result === 'ok') {
-        this.productsService.deleteProduct(item);
-        this.productsService.generatedData$
-          .pipe(take(1))
-          .subscribe((products) => {
-            this.generatedData = products;
-            this.filteredProducts = [...products];
-          });
+        this.productsService.delete(String(item.id)).subscribe(() => {
+          this.productsService
+            .getAll()
+            .pipe(take(1))
+            .subscribe((data: HttpProduct[]) => {
+              this.generatedData = data.map((item: HttpProduct) =>
+                this.toProduct(item)
+              );
+              this.filteredProducts = [...this.generatedData];
+            });
+        });
       }
     });
   }

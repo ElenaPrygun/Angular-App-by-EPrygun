@@ -9,6 +9,7 @@ import { NotFoundComponent } from './errors/not-found/not-found.component';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [AppComponent, NotFoundComponent],
@@ -18,7 +19,8 @@ import { FormsModule } from '@angular/forms';
     NgxSpinnerModule,    
     BrowserAnimationsModule,
     Ng2SearchPipeModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent],

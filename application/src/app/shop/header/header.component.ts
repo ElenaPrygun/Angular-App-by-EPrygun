@@ -20,5 +20,6 @@ export class HeaderComponent extends CartComponent {
 
   hideTooltip() {
     this.isAvaliable = true;
+   
   }
 }

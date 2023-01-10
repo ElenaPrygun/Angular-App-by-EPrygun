@@ -1,6 +1,6 @@
 
 <div class="card">
-  <span class="title"><a routerLink="/products/{{ product.id }}">{{ product.title }}</a></span>
+  <span class="title"><a routerLink="/products/{{ product.id }}">{{ product.name }}</a></span>
   <span class="price" appSelectColor [price]="product.price"
     >{{ product.price | currencyUAH }}
   </span>
