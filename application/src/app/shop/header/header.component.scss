@@ -8,7 +8,6 @@ header {
   padding-left: 97px;
   position: relative;
 
-
   .logo {
     width: 50px;
     height: 50px;
@@ -33,7 +32,7 @@ header {
 }
 
 .tooltip {
-  width: 535px;
+  width: 600px;
   height: auto;
   background-color: $btn-bg;
   position: absolute;
@@ -59,13 +58,14 @@ header {
   }
 
   .products-item {
-    @include flex-row(flex, row, space-around);
+    @include flex-row(flex, row, space-between);
     padding-bottom: 30px;
     font-size: 24px;
     .wrap-for-title {
       @include flex-row(flex, column, flex-start);
     }
     .amount {
+      display: flex;
       button {
         width: 40px;
         height: 40px;
@@ -90,4 +90,3 @@ header {
     align-self: flex-end;
   }
 }
-

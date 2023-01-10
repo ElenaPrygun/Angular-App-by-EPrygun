@@ -19,14 +19,14 @@
       placeholder="0"
       [(ngModel)]="inputValue"
     />
-    <button class="apply" (keyup)="filterPrice()">Apply</button>
+    <button class="apply" (click)="filterPrice()">Apply</button>
   </div>
 </div>
 
 <app-table
   [items]="filteredProducts"
   [titles]="productTitles"
-  (onSort)="sortData($event, items)"
+  ((onSort)="sortData($event, items)"
   (edit)="openEditDialog($event)"
   (add)="openAddDialog()"
   (delete)="openDeleteDialog($event)" 

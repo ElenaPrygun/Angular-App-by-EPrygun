@@ -17,20 +17,17 @@ export class TableComponent implements OnInit {
   @Output() add = new EventEmitter();
   @Output() edit = new EventEmitter();
   @Output() delete = new EventEmitter();
-  
+
   public p: number = 1;
   public sortProperty!: string;
   public sortDirection: 'asc' | 'desc' = 'asc';
-  
 
   constructor() {
     this.sortProperty = '';
     this.sortDirection = 'asc';
   }
 
-  ngOnInit(): void {
-    
-  }
+  ngOnInit(): void {}
 
   sortData(property: string) {
     this.sortProperty = property;

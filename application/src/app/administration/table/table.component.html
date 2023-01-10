@@ -42,7 +42,7 @@
     >
       <div>{{ item.id.slice(0,5) }}</div>
       <div>{{ item.name }}</div>
-      <div>{{ item.price | currency : "₴" }}</div>
+      <div>{{ item.price| currency : "₴"  }}</div>
       <div>
         <button class="circle-btn" (click)="this.edit.emit(item)">&#x270D;</button>
         <button class="circle-btn" (click)="this.delete.emit(item)">&#x274C;</button>

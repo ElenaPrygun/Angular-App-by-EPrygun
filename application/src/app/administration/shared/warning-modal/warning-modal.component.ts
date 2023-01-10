@@ -15,7 +15,7 @@ export class WarningModalComponent {
   ) {}
 
   ngOnInit(): void {
-    this.title = this.data.item.name;
+    this.title = `${this.data.name}`;
   }
 
   onCancel(): void {

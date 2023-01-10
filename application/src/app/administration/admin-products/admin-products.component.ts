@@ -17,7 +17,7 @@ import { ProductHTTPService } from 'src/app/shared/services/product-http.service
 })
 export class AdminProductsComponent {
   searchValue = '';
-  filteredProducts: ProductData[] = [];
+  filteredProducts: any[] = [];
   private dataSubscription: Subscription = new Subscription();
   public generatedData: ProductData[] = [];
   public productTitles = [
@@ -63,7 +63,6 @@ export class AdminProductsComponent {
   searchData() {
     this.filteredProducts = this.generatedData.filter((product) => {
       return (
-        product.name.toLowerCase().includes(this.searchValue.toLowerCase()) ||
         product.price.toString().includes(this.searchValue) ||
         product.name.toLowerCase().includes(this.searchValue.toLowerCase())
       );
@@ -175,3 +174,23 @@ export class AdminProductsComponent {
     });
   }
 }
+
+// sortData(property: string, items: any[]) {
+//   this.sortProperty = property;
+//   this.sortDirection = this.sortDirection === 'asc' ? 'desc' : 'asc';
+//   this.items = [...this.items].sort((a, b) => {
+//     if (this.sortDirection === 'asc') {
+//       if (property == 'price') {
+//         return a.price > b.price ? 1 : -1;
+//       } else {
+//         return a[property] > b[property] ? 1 : -1;
+//       }
+//     } else {
+//       if (property == 'price') {
+//         return a.price < b.price ? 1 : -1;
+//       } else {
+//         return a[property] < b[property] ? 1 : -1;
+//       }
+//     }
+//   });
+// }
