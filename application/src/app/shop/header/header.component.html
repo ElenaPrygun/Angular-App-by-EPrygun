@@ -3,9 +3,10 @@
   <nav>
     <ul>
       <li><a routerLink="/products">Products</a></li>
-      <li (mouseenter)="showTooltip()" >
+      <li (mouseenter)="showTooltip()">
         <a routerLink="/cart">Cart</a>
       </li>
+      <li class="login"><a routerLink="/login">Log in</a></li>
     </ul>
   </nav>
 </header>
@@ -21,10 +22,9 @@
         <button (click)="minus(item)">-</button>
         <span>{{ item.amount }}</span>
         <button (click)="plus(item)">+</button>
-      </div> 
-      <button (click)="removeItem(item.id)" class="add-btn">Delete</button> 
+      </div>
+      <button (click)="removeItem(item.id)" class="add-btn">Delete</button>
     </div>
     <div class="cart-price">Total: {{ totalPrice }} UAH</div>
   </div>
 </div>
-
