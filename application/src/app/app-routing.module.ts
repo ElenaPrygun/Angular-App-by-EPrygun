@@ -1,10 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-
 import { CartComponent } from './shop/cart/cart.component';
 import { NotFoundComponent } from './errors/not-found/not-found.component';
-import { AdministrationComponent } from './administration/administration.component';
 
 const routes: Routes = [
   {
@@ -18,7 +16,7 @@ const routes: Routes = [
     component: CartComponent,
   },
   {
-    path: 'administration',
+    path: 'administration',    
     loadChildren: () =>
       import('./administration/administration.module').then(
         (mod) => mod.AdministrationModule

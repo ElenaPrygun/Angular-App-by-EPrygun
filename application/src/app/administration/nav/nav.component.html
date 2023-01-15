@@ -3,7 +3,7 @@
   <ul>
     <li routerLinkActive="active"><a routerLink="./users">Users</a></li>
     <li routerLinkActive="active"><a routerLink="./products">Products</a></li>
-    <li routerLinkActive="active"><a routerLink="login">Log out</a></li>
+    <li  (click)="signOut()" routerLinkActive="active"><a routerLink="login">Log out</a></li>
   </ul>
   <div class="footer-nav"><a routerLink="/products">Landing -></a></div>
 </nav>
