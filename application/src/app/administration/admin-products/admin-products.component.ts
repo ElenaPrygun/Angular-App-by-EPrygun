@@ -37,8 +37,7 @@ export class AdminProductsComponent {
 
   constructor(
     public productsService: ProductHTTPService,
-    private SpinnerService: NgxSpinnerService,
-    private dialog: MatDialog
+    private SpinnerService: NgxSpinnerService
   ) {}
 
   ngOnInit(): void {
@@ -97,100 +96,4 @@ export class AdminProductsComponent {
       }
     }
   }
-
-  public openEditDialog(item: ProductData): void {
-    const dialogRef = this.dialog.open(ProductModalComponent, {
-      data: { isEdit: true, item },
-    });
-
-    dialogRef.afterClosed().subscribe((result: ProductData) => {
-      if (result) {
-        this.productsService.update(result);
-        this.productsService
-          .getAll()
-          .pipe(take(1))
-          .subscribe((products) => {
-            this.generatedData = products;
-            this.filteredProducts = [...products];
-          });
-      }
-    });
-  }
-
-  public openAddDialog(): void {
-    const dialogRef = this.dialog.open(ProductModalComponent, {
-      data: { isEdit: false },
-    });
-
-    dialogRef.afterClosed().subscribe((result: ProductData) => {
-      if (result) {
-        let newProduct: ProductData = {
-          name: result.name,
-          price: result.price,
-        };
-
-        this.productsService.create(newProduct).subscribe(() => {
-          this.productsService
-            .getAll()
-            .pipe(take(1))
-            .subscribe((data: HttpProduct[]) => {
-              this.generatedData = data.map((item: HttpProduct) =>
-                this.toProduct(item)
-              );
-              this.filteredProducts = [...this.generatedData];
-            });
-        });
-      }
-    });
-  }
-
-  private toProduct(data: HttpProduct): ProductData {
-    return {
-      id: data.id,
-      name: data.name,
-      price: data.price,
-    };
-  }
-
-  public openDeleteDialog(item: ProductData): void {
-    const dialogRef = this.dialog.open(WarningModalComponent, {
-      data: item,
-    });
-
-    dialogRef.afterClosed().subscribe((result: string) => {
-      if (result === 'ok') {
-        this.productsService.delete(String(item.id)).subscribe(() => {
-          this.productsService
-            .getAll()
-            .pipe(take(1))
-            .subscribe((data: HttpProduct[]) => {
-              this.generatedData = data.map((item: HttpProduct) =>
-                this.toProduct(item)
-              );
-              this.filteredProducts = [...this.generatedData];
-            });
-        });
-      }
-    });
-  }
 }
-
-// sortData(property: string, items: any[]) {
-//   this.sortProperty = property;
-//   this.sortDirection = this.sortDirection === 'asc' ? 'desc' : 'asc';
-//   this.items = [...this.items].sort((a, b) => {
-//     if (this.sortDirection === 'asc') {
-//       if (property == 'price') {
-//         return a.price > b.price ? 1 : -1;
-//       } else {
-//         return a[property] > b[property] ? 1 : -1;
-//       }
-//     } else {
-//       if (property == 'price') {
-//         return a.price < b.price ? 1 : -1;
-//       } else {
-//         return a[property] < b[property] ? 1 : -1;
-//       }
-//     }
-//   });
-// }

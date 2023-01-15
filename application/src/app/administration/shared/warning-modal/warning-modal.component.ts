@@ -17,7 +17,7 @@ export class WarningModalComponent {
   ) {}
 
   ngOnInit(): void {
-    this.title = `${this.data.name}`;
+    this.title = this.data.name;
   }
 
   onCancel(): void {
@@ -25,7 +25,7 @@ export class WarningModalComponent {
   }
 
   onOK(): void {
-    this.productService.delete(this.data.productId).subscribe({
+    this.productService.delete(this.data.data.id).subscribe({
       next: (response) => {
         window.location.reload();
       },

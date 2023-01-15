@@ -3,5 +3,5 @@ export interface ProductData {
   name: string;
   price: number;
   amount?: number;
-  // description: string;
+  description?: string;
 }

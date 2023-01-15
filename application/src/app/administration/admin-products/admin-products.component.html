@@ -26,10 +26,6 @@
 <app-table
   [items]="filteredProducts"
   [titles]="productTitles"
-  ((onSort)="sortData($event, items)"
-  (edit)="openEditDialog($event)"
-  (add)="openAddDialog()"
-  (delete)="openDeleteDialog($event)" 
+  ((onSort)="sortData($event, items)"  
 ></app-table>
-
 

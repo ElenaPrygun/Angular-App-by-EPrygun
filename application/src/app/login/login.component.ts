@@ -14,23 +14,14 @@ export class LoginComponent {
     username: null,
     password: null,
   };
-
-  isLoginFailed = false;
-  errorMessage = '';
-  roles: string[] = [];
-
+  
   constructor(
     private authService: AuthService,
     private router: Router,
     private sessionToken: SessionTokenService
     ) {}
 
-  ngOnInit(): void {
-    // if (this.authService.isAuthenticated()) {
-    //   this.router.navigate(['administration']);
-    // }
-  }
-
+  
   onSubmit(): void {
     const { username, password } = this.form;
 

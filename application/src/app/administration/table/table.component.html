@@ -30,7 +30,7 @@
       >
         {{ title.changeProperty }}
       </div>
-      <button class="circle-btn add" (click)="add.emit()">&#x2795;</button>
+      <button class="circle-btn add" (click)="openAddDialog()">&#x2795;</button>
     </div>
   </div>
   <div class="table-body">
@@ -44,8 +44,8 @@
       <div>{{ item.name }}</div>
       <div>{{ item.price| currency : "₴"  }}</div>
       <div>
-        <button class="circle-btn" (click)="this.edit.emit(item)">&#x270D;</button>
-        <button class="circle-btn" (click)="this.delete.emit(item)">&#x274C;</button>
+        <button class="circle-btn" (click)="openEditDialog(item)">&#x270D;</button>
+        <button class="circle-btn" (click)="openDeleteDialog(item)">&#x274C;</button>
       </div>
     </div>
     <pagination-controls

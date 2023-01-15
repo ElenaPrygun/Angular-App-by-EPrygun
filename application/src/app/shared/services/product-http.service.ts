@@ -3,7 +3,7 @@ import { ProductData } from 'src/app/shop/shared/productData.interface';
 import { HttpProduct } from '../interfaces/httpProduct.interface';
 import { Observable, of, Subject, catchError, throwError } from 'rxjs';
 import { delay, map } from 'rxjs/operators';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient ,HttpErrorResponse} from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root',
@@ -13,8 +13,9 @@ export class ProductHTTPService {
 
   constructor(private http: HttpClient) {}
 
-  private errorHandler(error: Response) {
-    return throwError(() => new Error('Something wrong...'));
+  private errorHandler(error:  HttpErrorResponse) {
+    console.log(error);
+    return throwError(error.message || 'Something went wrong');
   }
 
   getAll(): Observable<HttpProduct[]> {
@@ -23,33 +24,27 @@ export class ProductHTTPService {
       .pipe(catchError(this.errorHandler));
   }
 
-  getById(productId: string): Observable<HttpProduct> {
+  getById(id: string): Observable<HttpProduct> {
     return this.http
-      .get<HttpProduct>(this.baseUrl + '/' + productId)
+      .get<HttpProduct>(this.baseUrl + '/' + id)
       .pipe(catchError(this.errorHandler));
   }
 
-  create(product: ProductData): Observable<HttpProduct> {
+  create(data: ProductData): Observable<HttpProduct> {
     return this.http
-      .post<HttpProduct>(this.baseUrl, {
-        name: product.name,
-        price: Number(product.price),
-      })
+      .post<HttpProduct>(this.baseUrl, data)
       .pipe(catchError(this.errorHandler));
   }
 
-  delete(productId: string): Observable<HttpProduct> {
+  delete(id: string): Observable<HttpProduct> {
     return this.http
-      .delete<HttpProduct>(this.baseUrl + '/' + productId)
+      .delete<HttpProduct>(this.baseUrl + '/' + id)
       .pipe(catchError(this.errorHandler));
   }
 
-  update(product: ProductData): Observable<HttpProduct> {
+  update(id:string, data: ProductData): Observable<HttpProduct> {
     return this.http
-      .put<HttpProduct>(this.baseUrl + '/' + product.id, {
-        name: product.name,
-        price: Number(product.price),
-      })
+      .put<HttpProduct>(this.baseUrl + '/' + id, data)
       .pipe(catchError(this.errorHandler));
   }
 }
