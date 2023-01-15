@@ -1,5 +1,6 @@
 import { Component, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { ProductHTTPService } from 'src/app/shared/services/product-http.service';
 
 @Component({
   selector: 'app-product-modal',
@@ -12,7 +13,8 @@ export class ProductModalComponent {
 
   constructor(
     public dialogRef: MatDialogRef<ProductModalComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any
+    @Inject(MAT_DIALOG_DATA) public data: any,
+    private productService: ProductHTTPService
   ) {}
 
   ngOnInit(): void {
@@ -26,6 +28,24 @@ export class ProductModalComponent {
   }
 
   onCancel(): void {
+    this.dialogRef.close();
+  }
+
+  showData(){
+    if(this.title=="Create Product"){
+      this.productService.create(this.item)
+      .subscribe({
+        next: (response) => {
+          window.location.reload();
+        },});
+    }else{
+      this.productService
+      .update(this.data.id)
+      .subscribe({
+        next: (response) => {
+          window.location.reload();
+        },})
+    }
     this.dialogRef.close();
   }
 }

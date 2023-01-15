@@ -1,5 +1,6 @@
 import { Component, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { ProductHTTPService } from 'src/app/shared/services/product-http.service';
 
 @Component({
   selector: 'app-warning-modal',
@@ -11,7 +12,8 @@ export class WarningModalComponent {
 
   constructor(
     public dialogRef: MatDialogRef<WarningModalComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any
+    @Inject(MAT_DIALOG_DATA) public data: any,
+    private productService: ProductHTTPService
   ) {}
 
   ngOnInit(): void {
@@ -23,6 +25,11 @@ export class WarningModalComponent {
   }
 
   onOK(): void {
-    this.dialogRef.close('ok');
+    this.productService.delete(this.data.productId).subscribe({
+      next: (response) => {
+        window.location.reload();
+      },
+    });
+    this.dialogRef.close();
   }
 }

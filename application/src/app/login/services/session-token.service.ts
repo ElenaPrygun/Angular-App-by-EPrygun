@@ -9,7 +9,7 @@ export class SessionTokenService {
   constructor() {}
 
   signOut(): void {
-    sessionStorage.clear();
+    sessionStorage.clear();    
   }
 
   public saveToken(token: string): void {

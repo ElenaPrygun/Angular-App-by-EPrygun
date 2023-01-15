@@ -1,6 +1,4 @@
 import { Component } from '@angular/core';
-import { SessionTokenService } from 'src/app/login/services/session-token.service';
-import { Router } from '@angular/router';
 import { AuthService } from 'src/app/login/services/auth.service';
 
 @Component({
@@ -9,11 +7,10 @@ import { AuthService } from 'src/app/login/services/auth.service';
   styleUrls: ['./nav.component.scss'],
 })
 export class NavComponent {
-  constructor(private authService: AuthService, private router: Router) {}
+  constructor(private authService: AuthService) {}
 
   signOut() {
     this.authService.logout();
-    // location.reload();
-    // this.router.navigate(['products']);
+    location.reload();
   }
 }
