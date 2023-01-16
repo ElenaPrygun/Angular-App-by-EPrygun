@@ -2,6 +2,8 @@ import { Component, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ProductHTTPService } from 'src/app/shared/services/product-http.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { ProductData } from 'src/app/shop/shared/productData.interface';
+import { HttpProduct } from '../../../shared/interfaces/httpProduct.interface';
 
 @Component({
   selector: 'app-product-modal',
@@ -9,8 +11,12 @@ import { FormBuilder, FormGroup } from '@angular/forms';
   styleUrls: ['./product-modal.component.scss'],
 })
 export class ProductModalComponent {
-  public keys: string[] = Object.keys(this.data.data);
+  public keys: [string, any][] = Object.entries(this.data.data);
   public titleText!: string;
+
+  form: FormGroup = this.fb.group({
+    ...this.data.data,
+  });
 
   constructor(
     public dialogRef: MatDialogRef<ProductModalComponent>,
@@ -18,20 +24,15 @@ export class ProductModalComponent {
     private fb: FormBuilder,
     private productsService: ProductHTTPService
   ) {}
-  form: FormGroup = this.fb.group({
-    ...this.data.data,
-  });
 
   closeDialog() {
     this.dialogRef.close();
   }
+
   ngOnInit() {
-    if (this.data.id) {
-      this.titleText = 'Edit Product';
-    } else {
-      this.titleText = 'Add Product';
-    }
+    this.titleText = this.data.id ? 'Edit Product' : 'Add Product';
   }
+
   showData() {
     let { name, price, description } = this.form.getRawValue();
 
@@ -62,5 +63,5 @@ export class ProductModalComponent {
         });
     }
     this.dialogRef.close();
-  }
+   }
 }

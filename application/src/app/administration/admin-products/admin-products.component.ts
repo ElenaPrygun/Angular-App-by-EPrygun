@@ -5,9 +5,6 @@ import { ProductsService } from 'src/app/shop/shared/products.service';
 import { Subscription, Subject, take } from 'rxjs';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
-import { MatDialog } from '@angular/material/dialog';
-import { ProductModalComponent } from '../shared/product-modal/product-modal.component';
-import { WarningModalComponent } from '../shared/warning-modal/warning-modal.component';
 import { ProductHTTPService } from 'src/app/shared/services/product-http.service';
 
 @Component({
