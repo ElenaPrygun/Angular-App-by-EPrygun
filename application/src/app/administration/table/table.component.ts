@@ -11,9 +11,11 @@ import { ProductData } from 'src/app/shop/shared/productData.interface';
 })
 export class TableComponent {
   @Input()
-  public items: any;
+  public items!: { id: string; name: string; price?: number; date?: Date; }[];
   @Input()
   public titles: any;
+  @Input()
+  public displayPrice: boolean = true;
 
   @Output()
   public onSort: EventEmitter<string> = new EventEmitter<string>();
@@ -47,13 +49,14 @@ export class TableComponent {
         data: {
           name: item.name,
           price: item.price,
+          date: item.date,
           description: item.description,
         },
         id: item.id,
       },
     });
   }
-  openDeleteDialog(item: ProductData) {
+  openDeleteDialog(item: { id: string; name: string; price?: number; date?: Date }) {
     this.dialog.open(WarningModalComponent, {
       data: { data: { id: item.id } },
     });

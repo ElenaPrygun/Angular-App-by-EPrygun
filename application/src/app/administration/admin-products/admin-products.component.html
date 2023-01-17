@@ -24,7 +24,7 @@
 </div>
 
 <app-table
-  [items]="filteredProducts"
+  [items]="filteredProducts" [displayPrice]="true"
   [titles]="productTitles"
   ((onSort)="sortData($event, items)"  
 ></app-table>

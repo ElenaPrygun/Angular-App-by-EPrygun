@@ -42,7 +42,8 @@
     >
       <div>{{ item.id.slice(0,5) }}</div>
       <div>{{ item.name }}</div>
-      <div>{{ item.price| currency : "₴"  }}</div>
+      <div *ngIf="displayPrice">{{ item.price| currency : "₴"  }}</div>
+      <div *ngIf="!displayPrice">{{ item.date | date }}</div>
       <div>
         <button class="circle-btn" (click)="openEditDialog(item)">&#x270D;</button>
         <button class="circle-btn" (click)="openDeleteDialog(item)">&#x274C;</button>

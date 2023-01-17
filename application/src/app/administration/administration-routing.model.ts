@@ -14,7 +14,7 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        redirectTo: '/administration/products',
+        redirectTo: '/administration/users',
         pathMatch: 'full',
       },
       {
