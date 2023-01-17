@@ -40,13 +40,23 @@
       "
       class="table-item"
     >
-      <div>{{ item.id.slice(0,5) }}</div>
-      <div>{{ item.name }}</div>
-      <div *ngIf="displayPrice">{{ item.price| currency : "₴"  }}</div>
-      <div *ngIf="!displayPrice">{{ item.date | date }}</div>
+      <div>{{ item.id.slice(0, 5) }}</div>
+      <div *ngIf="displayProduct">{{ item.name }}</div>      
+      <div *ngIf="!displayProduct">
+        {{ item.username }}
+      </div>
+      <div *ngIf="displayProduct">{{ item.price | currency : "₴" }}</div>
+
+      <div *ngIf="!displayProduct">
+        {{ item.updatedAt | date : "dd/MM/yyyy" }}
+      </div>
       <div>
-        <button class="circle-btn" (click)="openEditDialog(item)">&#x270D;</button>
-        <button class="circle-btn" (click)="openDeleteDialog(item)">&#x274C;</button>
+        <button class="circle-btn" (click)="openEditDialog(item)">
+          &#x270D;
+        </button>
+        <button class="circle-btn" (click)="openDeleteDialog(item)">
+          &#x274C;
+        </button>
       </div>
     </div>
     <pagination-controls

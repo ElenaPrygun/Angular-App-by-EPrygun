@@ -3,7 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { ProductModalComponent } from '../shared/product-modal/product-modal.component';
 import { WarningModalComponent } from '../shared/warning-modal/warning-modal.component';
 import { ProductData } from 'src/app/shop/shared/productData.interface';
-
+import { UserModalComponent } from '../shared/user-modal/user-modal.component';
 @Component({
   selector: 'app-table',
   templateUrl: './table.component.html',
@@ -11,11 +11,17 @@ import { ProductData } from 'src/app/shop/shared/productData.interface';
 })
 export class TableComponent {
   @Input()
-  public items!: { id: string; name: string; price?: number; date?: Date; }[];
+  public items!: {
+    id: string;
+    name?: string;
+    price?: number;
+    updatedAt?: string;
+    username?: string;
+  }[];
   @Input()
   public titles: any;
   @Input()
-  public displayPrice: boolean = true;
+  public displayProduct: boolean = true;
 
   @Output()
   public onSort: EventEmitter<string> = new EventEmitter<string>();
@@ -44,28 +50,54 @@ export class TableComponent {
   }
 
   openEditDialog(item: any) {
-    this.dialog.open(ProductModalComponent, {
-      data: {
+    if (this.displayProduct) {
+      this.dialog.open(ProductModalComponent, {
         data: {
-          name: item.name,
-          price: item.price,
-          date: item.date,
-          description: item.description,
+          data: {
+            name: item.name,
+            price: item.price,
+            description: item.description,
+          },
+          id: item.id,
         },
-        id: item.id,
-      },
-    });
+      });
+    } else {
+      this.dialog.open(UserModalComponent, {
+        data: {
+          data: {
+            username: item.username,
+            updatedAt: item.updatedAt,
+          },
+          id: item.id,
+        },
+      });
+    }
   }
-  openDeleteDialog(item: { id: string; name: string; price?: number; date?: Date }) {
+  openDeleteDialog(item: {
+    id: string;
+    name?: string;
+    price?: number;
+    updatedAt?: string;
+    username?: string;
+  }) {
     this.dialog.open(WarningModalComponent, {
       data: { data: { id: item.id } },
     });
   }
+
   openAddDialog() {
-    this.dialog.open(ProductModalComponent, {
-      data: {
-        data: { name: '', price: '', description: '' },
-      },
-    });
+    if (this.displayProduct) {
+      this.dialog.open(ProductModalComponent, {
+        data: {
+          data: { name: '', price: '', description: '' },
+        },
+      });
+    } else {
+      this.dialog.open(UserModalComponent, {
+        data: {
+          data: { username: '', password: '' },
+        },
+      });
+    }
   }
 }

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import HttpUser  from '../interfaces/httpUser.interface';
-// import { HttpProduct } from '../interfaces/httpProduct.interface';
+import User from '../interfaces/user.interface';
 import { Observable, of, Subject, catchError, throwError } from 'rxjs';
 import { delay, map } from 'rxjs/operators';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
@@ -30,7 +30,7 @@ export class UsersHTTPService {
       .pipe(catchError(this.errorHandler));
   }
 
-  create(data: HttpUser): Observable<HttpUser> {
+  create(data: User): Observable<HttpUser> {
     return this.http
       .post<HttpUser>(this.baseUrl, data)
       .pipe(catchError(this.errorHandler));
@@ -42,7 +42,7 @@ export class UsersHTTPService {
       .pipe(catchError(this.errorHandler));
   }
 
-  update(id: string, data: HttpUser): Observable<HttpUser> {
+  update(id: string, data: User): Observable<HttpUser> {
     return this.http
       .put<HttpUser>(this.baseUrl + '/' + id, data)
       .pipe(catchError(this.errorHandler));

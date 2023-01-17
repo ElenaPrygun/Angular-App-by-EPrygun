@@ -3,7 +3,7 @@ import { Subscription, Subject, take } from 'rxjs';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 import { UsersHTTPService } from 'src/app/shared/services/users-http.service';
-import  HttpUser  from '../../shared/interfaces/httpUser.interface';
+import HttpUser from '../../shared/interfaces/httpUser.interface';
 
 @Component({
   selector: 'app-users',
@@ -32,9 +32,8 @@ export class UsersComponent {
     this.SpinnerService.show();
     this.dataSubscription = this.userService.getAll().subscribe((d) => {
       this.generatedData = d;
-      // this.filteredProducts = d;
       this.SpinnerService.hide();
-    });   
+    });
   }
 
   ngOnDestroy() {
