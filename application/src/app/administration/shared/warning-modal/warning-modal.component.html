@@ -1,0 +1,16 @@
+<div class="container">
+  <img src="../../../../assets/images/attention.png" width="100px" />
+  <div>
+    You will delete
+    <strong>{{ title }}</strong>
+    <p>continue?</p>
+  </div>
+  <div mat-dialog-actions>
+    <button mat-button (click)="onCancel()">
+      Cancel
+    </button>
+    <button mat-button (click)="onOK()" cdkFocusInitial>
+      OK
+    </button>
+  </div>
+</div>

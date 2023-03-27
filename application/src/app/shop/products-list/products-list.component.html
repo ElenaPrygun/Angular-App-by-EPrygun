@@ -1,0 +1,8 @@
+<main>
+  <ngx-spinner type="ball-scale-multiple"></ngx-spinner>
+  <h2>Products</h2>
+  <div class="wrap-for-cards" #scrollContainer>
+    <app-card  *ngFor="let val of displayedData" [product]="val"></app-card>
+  </div>
+  <button (click)="loadMore()" #loadMoreButton>Load more</button>
+</main>

@@ -1,0 +1,33 @@
+<div class="login">
+  <div class="wrapper">
+    <h1 class="title">Admin login</h1>
+    <form
+      class="form"
+      name="form"
+      (ngSubmit)="onSubmit()"
+      #f="ngForm"
+      novalidate
+    >
+      <input
+        type="text"
+        placeholder="User name.."
+        name="username"
+        [(ngModel)]="form.username"
+        required
+        #username="ngModel"
+      />
+
+      <input
+        type="password"
+        placeholder="Password.."
+        name="password"
+        [(ngModel)]="form.password"
+        required
+        minlength="6"
+        #password="ngModel"
+      />
+
+      <button class="login-btn">Login</button>
+    </form>
+  </div>
+</div>

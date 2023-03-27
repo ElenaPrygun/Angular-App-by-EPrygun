@@ -17,14 +17,15 @@
       type="number"
       class="amount"
       placeholder="0"
-      [(ngModel)]="inputValue"      
+      [(ngModel)]="inputValue"
     />
     <button class="apply" (click)="filterPrice()">Apply</button>
   </div>
 </div>
 
 <app-table
-  [items]="filteredProducts"
+  [items]="filteredProducts" [displayProduct]="true"
   [titles]="productTitles"
-  (onSort)="sortData($event, items)"
+  ((onSort)="sortData($event, items)"  
 ></app-table>
+

@@ -1,9 +1,11 @@
 import { Component } from '@angular/core';
-import { ProductData } from 'src/app/products/shared/productData.interface';
-import { ProductsService } from 'src/app/products/shared/products.service';
-import { Subscription, Subject } from 'rxjs';
+import { ProductData } from 'src/app/shop/shared/productData.interface';
+import { HttpProduct } from '../../shared/interfaces/httpProduct.interface';
+import { ProductsService } from 'src/app/shop/shared/products.service';
+import { Subscription, Subject, take } from 'rxjs';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
+import { ProductHTTPService } from 'src/app/shared/services/product-http.service';
 
 @Component({
   selector: 'app-admin-products',
@@ -12,7 +14,7 @@ import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 })
 export class AdminProductsComponent {
   searchValue = '';
-  filteredProducts: ProductData[] = [];
+  filteredProducts: any[] = [];
   private dataSubscription: Subscription = new Subscription();
   public generatedData: ProductData[] = [];
   public productTitles = [
@@ -31,21 +33,19 @@ export class AdminProductsComponent {
   inputValue = '';
 
   constructor(
-    public productsService: ProductsService,
+    public productsService: ProductHTTPService,
     private SpinnerService: NgxSpinnerService
   ) {}
 
   ngOnInit(): void {
     this.SpinnerService.show();
-    this.dataSubscription = this.productsService.generatedData$.subscribe(
-      (d) => {
-        this.generatedData = d;
-        this.filteredProducts = d;
-        this.SpinnerService.hide();
-      }
-    );
+    this.dataSubscription = this.productsService.getAll().subscribe((d) => {
+      this.generatedData = d;
+      this.filteredProducts = d;
+      this.SpinnerService.hide();
+    });
     this.searchSubject$
-      .pipe(debounceTime(2000), distinctUntilChanged())
+      .pipe(debounceTime(1000), distinctUntilChanged())
       .subscribe((value) => {
         this.searchValue = value;
         this.searchData();
@@ -59,9 +59,8 @@ export class AdminProductsComponent {
   searchData() {
     this.filteredProducts = this.generatedData.filter((product) => {
       return (
-        product.title.toLowerCase().includes(this.searchValue.toLowerCase()) ||
         product.price.toString().includes(this.searchValue) ||
-        product.title.toLowerCase().includes(this.searchValue.toLowerCase())
+        product.name.toLowerCase().includes(this.searchValue.toLowerCase())
       );
     });
   }
@@ -81,7 +80,7 @@ export class AdminProductsComponent {
   filterPrice() {
     this.filteredProducts = this.generatedData;
     const price = parseInt(this.inputValue, 10);
-    if (isNaN(price)) {      
+    if (isNaN(price)) {
     } else {
       if (this.selectedOption === 'less') {
         this.filteredProducts = this.generatedData.filter(

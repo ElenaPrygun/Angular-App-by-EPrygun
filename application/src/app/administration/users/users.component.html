@@ -1,13 +1,15 @@
 <div class="users-header">
-    <h2>Users</h2>
-    <div class="users-inputs">
-        <input type="search" placeholder="Search..." class="search"/>
-        <select>
-            <option>More then:</option>
-        </select>
-        <input type="number" class="amount"/>
-        <button class="apply">Apply</button>
-    </div>
+  <ngx-spinner type="ball-scale-multiple"></ngx-spinner>
+  <h2>Users</h2>
+  <div class="users-inputs">
+    <input type="search" placeholder="Search..." class="search" />
+    <select>
+      <option>Date from:</option>
+    </select>
+    <input type="number" class="amount" />
+    <button class="apply">Apply</button>
+  </div>
 </div>
 
-<app-table></app-table>
+<app-table [items]="generatedData" [displayProduct]="false"
+[titles]="usersTitles"></app-table>

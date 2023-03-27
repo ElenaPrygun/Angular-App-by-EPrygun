@@ -1,16 +1,14 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-
-import { CartComponent } from './products/cart/cart.component';
-import { NotFoundComponent } from './shared/not-found/not-found.component';
-import { AdministrationComponent } from './administration/administration.component';
+import { CartComponent } from './shop/cart/cart.component';
+import { NotFoundComponent } from './errors/not-found/not-found.component';
 
 const routes: Routes = [
   {
     path: '',
     loadChildren: () =>
-      import('./products/products.module').then((mod) => mod.ProductsModule),
+      import('./shop/products.module').then((mod) => mod.ProductsModule),
   },
   {
     path: 'cart',
@@ -18,11 +16,16 @@ const routes: Routes = [
     component: CartComponent,
   },
   {
-    path: 'administration',
+    path: 'administration',    
     loadChildren: () =>
       import('./administration/administration.module').then(
         (mod) => mod.AdministrationModule
       ),
+  },
+  {
+    path: 'login',
+    loadChildren: () =>
+      import('../app/login/login.module').then((m) => m.LoginModule),
   },
   {
     path: '**',

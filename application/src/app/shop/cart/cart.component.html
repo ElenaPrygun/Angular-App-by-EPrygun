@@ -1,0 +1,24 @@
+<app-header></app-header>
+<div class="container">
+  <div class="cart-header">
+    <h2>Cart</h2>
+    <button class="add-btn">Send order</button>
+  </div>
+  <div class="cart-price">Total: {{ totalPrice }} UAH</div>
+
+  <div class="products">
+    <div *ngFor="let item of items" class="products-item">
+      <span>{{ item.name }}</span>
+      <span>{{item.price | currencyUAH}} </span> 
+        <div class="amount">
+        <button (click)="minus(item)">-</button>
+        <span>{{ item.amount }} </span>
+        <button (click)="plus(item)">+</button>
+      </div> 
+      <button (click)="removeItem(item.id)" class="add-btn" *ngIf="item?.id">
+        Remove from cart
+      </button>
+    </div>
+  </div>
+</div>
+<app-bottom-nav></app-bottom-nav>
